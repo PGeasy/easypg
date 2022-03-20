@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Googlesigninapi">
         <activity
+            android:name=".FilterActivity"
+            android:exported="true"
+            android:label="@string/title_activity_filter"
+            android:theme="@style/Theme.Googlesigninapi.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
