@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".RegisterPgPage">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="135dp"
+            android:text="Register PG"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="PG Details" />
+
+        <EditText
+            android:hint="PG Name"
+            android:layout_width="match_parent"
+            android:id="@+id/et1"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:hint="Owner's Name"
+            android:layout_width="match_parent"
+            android:id="@+id/et2"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Phone number"
+            android:layout_width="match_parent"
+            android:id="@+id/et3"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Email ID"
+            android:layout_width="match_parent"
+            android:id="@+id/et4"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:hint="Number of Rooms Available"
+            android:layout_width="match_parent"
+            android:id="@+id/et5"
+            android:layout_height="wrap_content"/>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Location Details" />
+
+        <EditText
+            android:hint="City"
+            android:layout_width="match_parent"
+            android:id="@+id/et6"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Address"
+            android:layout_width="match_parent"
+            android:id="@+id/et7"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Lattitude"
+            android:layout_width="match_parent"
+            android:id="@+id/et8"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Longitude"
+            android:layout_width="match_parent"
+            android:id="@+id/et9"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Financial Info" />
+        <EditText
+            android:hint="Rent for single bed Room"
+            android:layout_width="match_parent"
+            android:id="@+id/et10"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Rent for double sharing "
+            android:layout_width="match_parent"
+            android:id="@+id/et11"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Rent for Triple sharing "
+            android:layout_width="match_parent"
+            android:id="@+id/et12"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+    </LinearLayout>
+</ScrollView>

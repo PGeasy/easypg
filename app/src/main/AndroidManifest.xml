@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Googlesigninapi">
         <activity
+            android:name=".Register_PG"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

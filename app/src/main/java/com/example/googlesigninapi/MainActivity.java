@@ -2,11 +2,13 @@ package com.example.googlesigninapi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.net.UrlQuerySanitizer;
@@ -63,6 +65,32 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        if (account != null) {
+            String personName = account.getDisplayName();
+            String personEmail = account.getEmail();
+            Uri personPhoto = account.getPhotoUrl();
+
+            View header_view = navigationView.getHeaderView(0);
+            TextView user_name = header_view.findViewById(R.id.user_name);
+            TextView user_email = header_view.findViewById(R.id.user_email);
+            CircleImageView user_pic = header_view.findViewById(R.id.user_pic);
+            user_name.setText(personName);
+            user_email.setText(personEmail);
+            try {
+                Glide.with(this)
+                        .load(personPhoto.toString())
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_background)
+                        .override(200, 200)
+                        .centerCrop()
+                        .into(user_pic);
+            }
+            catch(Exception e){
+
+            }
+        }
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -91,6 +119,40 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return true;
+            }
+        });
+
+        Button register = findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+                if(account != null){
+                    Intent intent = new Intent(getApplicationContext(), Register_PG.class);
+                    startActivity(intent);
+                }
+                else{
+                    AlertDialog builder1 = new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("NOT SIGNED IN")
+                            .setMessage("For Registration please sign in...")
+                            .setPositiveButton(
+                                    "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }).create();
+                    builder1.show();
+                }
+            }
+        });
+
+        Button search = findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
