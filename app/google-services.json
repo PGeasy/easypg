@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "755351212502",
+    "firebase_url": "https://easypg-467b0-default-rtdb.firebaseio.com",
+    "project_id": "easypg-467b0",
+    "storage_bucket": "easypg-467b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755351212502:android:df713bdfb93ad30e541477",
+        "android_client_info": {
+          "package_name": "com.example.googlesigninapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755351212502-6mht4q87sum73kto123cabjrbnjq3rcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmfhaog_jtiwjvtrjlmwRHD8imAL61IWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755351212502-6mht4q87sum73kto123cabjrbnjq3rcu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
