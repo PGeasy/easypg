@@ -8,8 +8,38 @@ public class PG {
     private String numberOfRooms;
     private String numberOfRoomsVacant;
     private String city;
+
+    private String pgID;
+
+    public String getPgID() {
+        return latitude+""+longitude;
+    }
+
+    public void setPgID(String pgID) {
+        this.pgID = pgID;
+    }
+
+    public boolean isACAvailable() {
+        return isACAvailable;
+    }
+
+    public void setACAvailable(boolean ACAvailable) {
+        isACAvailable = ACAvailable;
+    }
+
+
     private String address;
-    private double longitude;
+    private String longitude;
+
+    private String latitude;
+    private int singleSharingRent;
+    private int doubleSharingRent;
+    private int tripleSharingRent;
+
+    private boolean isWifiAvailable, isGeyserAvailable, isFoodAvailable, isSecurityAvailable, isParkingAvailable, isACAvailable;
+
+
+
 
     public String getPgemailID() {
         return pgemailID;
@@ -51,19 +81,19 @@ public class PG {
         this.address = address;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
@@ -131,12 +161,6 @@ public class PG {
         isParkingAvailable = parkingAvailable;
     }
 
-    private double latitude;
-    private int singleSharingRent;
-    private int doubleSharingRent;
-    private int tripleSharingRent;
-
-    private boolean isWifiAvailable, isGeyserAvailable, isFoodAvailable, isSecurityAvailable, isParkingAvailable;
 
     public String getPgName() {
         return pgName;

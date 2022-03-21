@@ -50,7 +50,7 @@
         <EditText
             android:hint="Number of Rooms Available"
             android:layout_width="match_parent"
-            android:id="@+id/et5"
+            android:id="@+id/et12"
             android:layout_height="wrap_content"/>
         <TextView
 
@@ -62,22 +62,22 @@
         <EditText
             android:hint="City"
             android:layout_width="match_parent"
-            android:id="@+id/et6"
+            android:id="@+id/et5"
             android:layout_height="wrap_content"/>
         <EditText
             android:hint="Address"
             android:layout_width="match_parent"
-            android:id="@+id/et7"
+            android:id="@+id/et6"
             android:layout_height="wrap_content"/>
         <EditText
             android:hint="Lattitude"
             android:layout_width="match_parent"
-            android:id="@+id/et8"
+            android:id="@+id/et7"
             android:layout_height="wrap_content"/>
         <EditText
             android:hint="Longitude"
             android:layout_width="match_parent"
-            android:id="@+id/et9"
+            android:id="@+id/et8"
             android:layout_height="wrap_content"/>
 
         <TextView
@@ -88,21 +88,58 @@
         <EditText
             android:hint="Rent for single bed Room"
             android:layout_width="match_parent"
-            android:id="@+id/et10"
+            android:id="@+id/et9"
             android:layout_height="wrap_content"/>
         <EditText
             android:hint="Rent for double sharing "
             android:layout_width="match_parent"
-            android:id="@+id/et11"
+            android:id="@+id/et10"
             android:layout_height="wrap_content"/>
         <EditText
             android:hint="Rent for Triple sharing "
             android:layout_width="match_parent"
-            android:id="@+id/et12"
+            android:id="@+id/et11"
             android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:id="@+id/wifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is Wifi Available" />
+
+        <RadioButton
+            android:id="@+id/ac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is AC Available" />
+
+        <RadioButton
+            android:id="@+id/geyser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is Geyser Available" />
+
+        <RadioButton
+            android:id="@+id/food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is Food Available" />
+
+        <RadioButton
+            android:id="@+id/parking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is Parking Available" />
+
+        <RadioButton
+            android:id="@+id/security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is security Available" />
 
         <Button
             android:id="@+id/submit"
+            android:onClick="onClickSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit" />
