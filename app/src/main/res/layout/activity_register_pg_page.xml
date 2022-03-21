@@ -101,6 +101,42 @@
         android:id="@+id/et11"
         android:layout_height="wrap_content"/>
 
+    <RadioButton
+        android:id="@+id/wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is Wifi Available" />
+
+    <RadioButton
+        android:id="@+id/ac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is AC Available" />
+
+    <RadioButton
+        android:id="@+id/geyser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is Geyser Available" />
+
+    <RadioButton
+        android:id="@+id/food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is Food Available" />
+
+    <RadioButton
+        android:id="@+id/parking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is Parking Available" />
+
+    <RadioButton
+        android:id="@+id/security"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is security Available" />
+
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"
