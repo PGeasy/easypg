@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class News_Adapter extends RecyclerView.Adapter<News_Adapter.ViewHolder> {
+public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
     Movie_data[] movie_list;
 
-    News_Adapter(Movie_data[] movie_list){
+    PG_Adapter(Movie_data[] movie_list){
         this.movie_list = movie_list;
     }
 
@@ -30,7 +30,7 @@ public class News_Adapter extends RecyclerView.Adapter<News_Adapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull News_Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull PG_Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String movie_name = movie_list[position].getName();
         String movie_date = movie_list[position].getDate();
         holder.setdata(movie_name, movie_date);

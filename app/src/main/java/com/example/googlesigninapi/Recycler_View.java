@@ -28,7 +28,7 @@ public class Recycler_View extends AppCompatActivity {
                 new Movie_data("Movie9", "Date9"),
                 new Movie_data("Movie10", "Date10")
         };
-        News_Adapter adapter = new News_Adapter(movie_list);
+        PG_Adapter adapter = new PG_Adapter(movie_list);
         recyclerView.setAdapter(adapter);
     }
 }

@@ -118,9 +118,9 @@ public class Register_PG extends AppCompatActivity {
                     Log.d("Reached", "Reading");
                     Object obj = (task.getResult().getValue());
                     try{
-                        HashMap<String, String> hashMap;
-                        hashMap = (HashMap<String, String>) obj;
-                        for(Map.Entry<String,String> entry : hashMap.entrySet()){
+                        HashMap<String, Object> hashMap;
+                        hashMap = (HashMap<String, Object>) obj;
+                        for(Map.Entry<String,Object> entry : hashMap.entrySet()){
                             HashMap<String, String> map1;
                             //map1 = (HashMap<String, String>) (entry.getValue());
 

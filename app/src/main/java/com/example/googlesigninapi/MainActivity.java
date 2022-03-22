@@ -157,11 +157,13 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Recycler_View.class);
+                Intent intent = new Intent(getApplicationContext(), Search_Filter.class);
                 startActivity(intent);
             }
         });
     }
+
+
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
