@@ -32,9 +32,9 @@ public class PG {
     private String longitude;
 
     private String latitude;
-    private int singleSharingRent;
-    private int doubleSharingRent;
-    private int tripleSharingRent;
+    private String singleSharingRent;
+    private String doubleSharingRent;
+    private String tripleSharingRent;
 
     private boolean isWifiAvailable, isGeyserAvailable, isFoodAvailable, isSecurityAvailable, isParkingAvailable, isACAvailable;
 
@@ -97,27 +97,27 @@ public class PG {
         this.latitude = latitude;
     }
 
-    public int getSingleSharingRent() {
+    public String getSingleSharingRent() {
         return singleSharingRent;
     }
 
-    public void setSingleSharingRent(int singleSharingRent) {
+    public void setSingleSharingRent(String singleSharingRent) {
         this.singleSharingRent = singleSharingRent;
     }
 
-    public int getDoubleSharingRent() {
+    public String getDoubleSharingRent() {
         return doubleSharingRent;
     }
 
-    public void setDoubleSharingRent(int doubleSharingRent) {
+    public void setDoubleSharingRent(String doubleSharingRent) {
         this.doubleSharingRent = doubleSharingRent;
     }
 
-    public int getTripleSharingRent() {
+    public String getTripleSharingRent() {
         return tripleSharingRent;
     }
 
-    public void setTripleSharingRent(int tripleSharingRent) {
+    public void setTripleSharingRent(String tripleSharingRent) {
         this.tripleSharingRent = tripleSharingRent;
     }
 

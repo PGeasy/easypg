@@ -1,5 +1,6 @@
 package com.example.googlesigninapi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,14 +8,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Register_PG extends AppCompatActivity {
 
@@ -57,6 +66,9 @@ public class Register_PG extends AppCompatActivity {
 
         DatabaseReference reference = MainActivity.database.getReference("PGInformation");
 
+        DatabaseReference pgRef = reference.child("PG");
+        String key = pgRef.push().getKey();
+
         Log.d("Reached", "Here");
         PG pg = new PG();
         pg.setPgName(et1.getText().toString());
@@ -71,9 +83,9 @@ public class Register_PG extends AppCompatActivity {
         pg.setAddress(et6.getText().toString());
         pg.setLongitude(et7.getText().toString());
         pg.setLatitude(et8.getText().toString());
-        pg.setSingleSharingRent(Integer.parseInt(et9.getText().toString()));
-        pg.setDoubleSharingRent(Integer.parseInt(et10.getText().toString()));
-        pg.setTripleSharingRent(Integer.parseInt(et11.getText().toString()));
+        pg.setSingleSharingRent(et9.getText().toString());
+        pg.setDoubleSharingRent(et10.getText().toString());
+        pg.setTripleSharingRent(et11.getText().toString());
 
         pg.setWifiAvailable(wifi.isChecked());
         pg.setGeyserAvailable(geyser.isChecked());
@@ -85,8 +97,42 @@ public class Register_PG extends AppCompatActivity {
 
         Log.d("Data", "successful");
 
-        reference.child("PG").child(pg.getPgID()).setValue(pg);
+        String ID = pg.getPgID();
+        Log.d("PG ID", ID);
 
+        try {
+            reference.child("PG").child(key).setValue(pg);
+        }
+        catch (Exception e){
+            Log.d("ErrorMessage", e.toString());
+        }
+        Log.d("Reached", "Before Reading");
+
+        reference.child("PG").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("Reached", "Reading");
+                    Object obj = (task.getResult().getValue());
+                    try{
+                        HashMap<String, String> hashMap;
+                        hashMap = (HashMap<String, String>) obj;
+                        for(Map.Entry<String,String> entry : hashMap.entrySet()){
+                            HashMap<String, String> map1;
+                            //map1 = (HashMap<String, String>) (entry.getValue());
+
+                        }
+
+                    }
+                    catch (Exception e){
+                        Log.d("ErrorMessage", e.toString());
+                    }
+                }
+            }
+        });
 
         /*AlertDialog builder1 = new AlertDialog.Builder(Register_PG.this)
                 .setTitle("DATA ADDED SUCCESSFULLY")
