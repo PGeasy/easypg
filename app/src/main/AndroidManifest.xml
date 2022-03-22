@@ -15,6 +15,9 @@
             android:name=".Register_PG"
             android:exported="false" />
         <activity
+            android:name=".Recycler_View"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
