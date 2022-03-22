@@ -17,11 +17,7 @@ import java.util.ArrayList;
 
 public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
-    Movie_data[] movie_list;
 
-    PG_Adapter(Movie_data[] movie_list){
-        this.movie_list = movie_list;
-    }
 
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,9 +27,10 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PG_Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String movie_name = movie_list[position].getName();
-        String movie_date = movie_list[position].getDate();
-        holder.setdata(movie_name, movie_date);
+        String PG_name = PG_list.getPgArrayList().get(position).getPgName();
+        String PG_address = PG_list.getPgArrayList().get(position).getAddress();
+        holder.setdata(PG_name, PG_address);
+
         holder.movie_name_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +41,7 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return movie_list.length;
+        return PG_list.getPgArrayList().size();
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder{

@@ -108,31 +108,7 @@ public class Register_PG extends AppCompatActivity {
         }
         Log.d("Reached", "Before Reading");
 
-        reference.child("PG").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("Reached", "Reading");
-                    Object obj = (task.getResult().getValue());
-                    try{
-                        HashMap<String, Object> hashMap;
-                        hashMap = (HashMap<String, Object>) obj;
-                        for(Map.Entry<String,Object> entry : hashMap.entrySet()){
-                            HashMap<String, String> map1;
-                            //map1 = (HashMap<String, String>) (entry.getValue());
 
-                        }
-
-                    }
-                    catch (Exception e){
-                        Log.d("ErrorMessage", e.toString());
-                    }
-                }
-            }
-        });
 
         /*AlertDialog builder1 = new AlertDialog.Builder(Register_PG.this)
                 .setTitle("DATA ADDED SUCCESSFULLY")
