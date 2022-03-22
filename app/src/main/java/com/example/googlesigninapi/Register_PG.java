@@ -81,8 +81,8 @@ public class Register_PG extends AppCompatActivity {
         Log.d("Data", "successful");
 
         pg.setAddress(et6.getText().toString());
-        pg.setLongitude(et7.getText().toString());
-        pg.setLatitude(et8.getText().toString());
+        pg.setLatitude(et7.getText().toString());
+        pg.setLongitude(et8.getText().toString());
         pg.setSingleSharingRent(et9.getText().toString());
         pg.setDoubleSharingRent(et10.getText().toString());
         pg.setTripleSharingRent(et11.getText().toString());
