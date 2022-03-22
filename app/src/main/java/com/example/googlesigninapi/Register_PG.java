@@ -109,8 +109,7 @@ public class Register_PG extends AppCompatActivity {
         Log.d("Reached", "Before Reading");
 
 
-
-        /*AlertDialog builder1 = new AlertDialog.Builder(Register_PG.this)
+        AlertDialog builder1 = new AlertDialog.Builder(Register_PG.this)
                 .setTitle("DATA ADDED SUCCESSFULLY")
                 .setMessage("Click OK to continue...")
                 .setPositiveButton(
@@ -121,6 +120,6 @@ public class Register_PG extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         }).create();
-        builder1.show();*/
+        builder1.show();
     }
 }
