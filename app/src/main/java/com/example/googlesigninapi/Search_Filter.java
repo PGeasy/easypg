@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,8 @@ public class Search_Filter extends AppCompatActivity {
     FusedLocationProviderClient fmpc;
     private Double latitude, longitude;
     private Toast t;
+    private SeekBar radiusLength;
+    private TextView radiusSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +51,29 @@ public class Search_Filter extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_filter);
         t = Toast.makeText(getApplicationContext(), null, Toast.LENGTH_LONG);
-        showlocation = (TextView) findViewById(R.id.showlocation);
         getlocation = (Button) findViewById(R.id.getlocation);
         fmpc = LocationServices.getFusedLocationProviderClient(this);
+
+        radiusLength = (SeekBar) findViewById(R.id.radiusLength);
+        radiusSelected = (TextView) findViewById(R.id.radiusSelected);
+
+        radiusLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                int progress = i;
+                radiusSelected.setText("Radius Selected: "+String.valueOf(progress)+"KM");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         getlocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +112,7 @@ public class Search_Filter extends AppCompatActivity {
                     Geocoder g = new Geocoder(Search_Filter.this, Locale.getDefault());
                     try {
                         List<Address> add = g.getFromLocation(l.getLatitude(), l.getLongitude(), 1);
-                        showlocation.setText("Lattitude "+Double.toString(add.get(0).getLongitude())+"\nLongitude "+Double.toString(add.get(0).getLongitude()));
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -97,4 +120,10 @@ public class Search_Filter extends AppCompatActivity {
             }
         });
     }
+
+    public void OnSearchClicked(View view){
+        Intent intent = new Intent();
+
+    }
+
 }

@@ -14,11 +14,28 @@
         android:layout_marginLeft="135dp"
         android:text="Search PG"
         android:textSize="30dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id = "@+id/latitude"
+        android:hint = "Enter Latitude of Area"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id = "@+id/longitude"
+        android:hint = "Enter Longitude of Area"
+        />
+
     <Button
         android:id="@+id/getlocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Get your Location" />
+
+
     <TextView
 
         android:layout_width="wrap_content"
@@ -51,11 +68,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Triple Sharing" />
+
     <TextView
-        android:id="@+id/showlocation"
+        android:id="@+id/radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "Select Radius"
+        android:textSize="20sp"
+        />
+
+
+    <SeekBar
+        android:id="@+id/radiusLength"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="50"
+        android:progress="10" />
+
+    <TextView
+        android:id="@+id/radiusSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text = "Radius Selected: 10 KM"/>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Search"
+        android:onClick="OnSearchClicked"
 
-        android:text=""
-        android:textSize="20dp" />
+        android:layout_marginLeft="150dp"
+        tools:ignore="OnClick" />
+
 </LinearLayout>
