@@ -197,13 +197,10 @@ public class Search_Filter extends AppCompatActivity {
                         Object pg_info = entry.getValue();
                         HashMap<String, Object> pgInformation = (HashMap<String, Object>) pg_info;
                         double lat1 = 1.2, long1 = 1.2;
-                        try {
-                            lat1 = Double.parseDouble((String) (pgInformation.get("latitude")));
-                            long1 = Double.parseDouble((String) (pgInformation.get("longitude")));
-                        }
-                        catch(Exception e){
-                            Log.d("Error", e.toString());
-                        }
+
+                        lat1 = Double.parseDouble((String) (pgInformation.get("latitude")));
+                        long1 = Double.parseDouble((String) (pgInformation.get("longitude")));
+
 
                         Log.d("Entry Found", lat1+" "+long1);
 
@@ -214,6 +211,8 @@ public class Search_Filter extends AppCompatActivity {
 
 
                             pg.setPgName((String)pgInformation.get("pgName"));
+                            //Log.d("PGNAME", pg.getPgName()+" "+(String)pgInformation.get("pgName"));
+
                             pg.setOwnerName((String)pgInformation.get("ownerName"));
                             pg.setPhoneNumber((String)pgInformation.get("phoneNumber"));
                             pg.setPgemailID((String)pgInformation.get("pgemailID"));
@@ -240,9 +239,19 @@ public class Search_Filter extends AppCompatActivity {
 
                     }
 
+                    Log.d("Data read", "Completed");
+
                 }
+                Log.d("Data read", "Completed_fully");
+
+                Intent intent = new Intent(Search_Filter.this,Recycler_View.class);
+                startActivity(intent);
             }
+
         });
+
+
+
 
     }
 
@@ -254,8 +263,9 @@ public class Search_Filter extends AppCompatActivity {
         catch (Exception e){
             Log.d("Error Found", e.toString());
         }
-        Intent intent = new Intent(getApplicationContext(), Recycler_View.class);
-        startActivity(intent);
+        Log.d("Trying to start", "Recyler View");
+
+
     }
 
 }

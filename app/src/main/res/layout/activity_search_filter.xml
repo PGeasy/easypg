@@ -8,8 +8,7 @@
     tools:context=".Search_Filter">
 
     <TextView
-
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="135dp"
         android:text="Search PG"

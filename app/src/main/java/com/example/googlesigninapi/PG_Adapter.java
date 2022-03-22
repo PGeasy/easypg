@@ -3,6 +3,7 @@ package com.example.googlesigninapi;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,17 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
 
 
+    ArrayList<PG> pgArrayList1;
+
+    /*public PG_Adapter() {
+        this.pgArrayList1 = PG_list.getPgArrayList();
+    }*/
+
+    public PG_Adapter(ArrayList<PG> pgs){
+        Log.d("Reached Here", "Adapter"+pgs.size());
+        this.pgArrayList1 = pgs;
+    }
+
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_recycler_view, parent, false);
@@ -27,8 +39,10 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PG_Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String PG_name = PG_list.getPgArrayList().get(position).getPgName();
-        String PG_address = PG_list.getPgArrayList().get(position).getAddress();
+
+        String PG_name = pgArrayList1.get(position).getPgName();
+        String PG_address = pgArrayList1.get(position).getAddress();
+        Log.d("Data", PG_name+""+PG_address+position);
         holder.setdata(PG_name, PG_address);
 
         holder.movie_name_tv.setOnClickListener(new View.OnClickListener() {
