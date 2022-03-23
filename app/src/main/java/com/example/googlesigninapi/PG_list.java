@@ -23,7 +23,7 @@ class PG_list {
         pgArrayList.add(pg);
     }
 
-    public void deletePGList(){
+    public static void deletePGList(){
         pgArrayList = null;
     }
 

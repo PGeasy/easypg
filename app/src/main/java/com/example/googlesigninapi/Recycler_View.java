@@ -22,6 +22,13 @@ public class Recycler_View extends AppCompatActivity {
         PG_Adapter adapter = new PG_Adapter(PG_list.getPgArrayList());
         recyclerView.setAdapter(adapter);
     }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        PG_list.deletePGList();
+    }
 }
 
 // Location of Gauri Shankar
