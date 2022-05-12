@@ -1,11 +1,13 @@
 package com.example.googlesigninapi;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -15,20 +17,29 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.UUID;
 
 public class Register_PG extends AppCompatActivity {
 
-    private TextView et1, et2,et3,et4, et12, et5,et6,et7,et8,et9,et10,et11;
+    static TextView et1, et2,et3,et4, et12, et5,et6,et7,et8,et9,et10,et11;
     private RadioButton ac, wifi,geyser, food,parking,security;
+    public Uri imageUri;
+    public PG pg;
+    String key;
 
 
     @Override
@@ -61,16 +72,56 @@ public class Register_PG extends AppCompatActivity {
 
     }
 
+    public void addImage(View view){
+        choosepicture();
+    }
+
+    private void choosepicture() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
+            imageUri = data.getData();
+            uploadPicture();
+
+        }
+    }
+
+
+    private void uploadPicture() {
+        key = UUID.randomUUID().toString();
+        StorageReference storageReference = MainActivity.reference.child("images/" + key);
+        storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.d("Upload Status", "Success");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Upload Status: ", "Failure");
+            }
+        });
+    }
+
 
     public void onClickSubmit(View view) {
 
         DatabaseReference reference = MainActivity.database.getReference("PGInformation");
 
         DatabaseReference pgRef = reference.child("PG");
-        String key = pgRef.push().getKey();
+
 
         Log.d("Reached", "Here");
-        PG pg = new PG();
+        if(pg == null)
+            pg = new PG();
+
         pg.setPgName(et1.getText().toString());
         pg.setOwnerName(et2.getText().toString());
         pg.setPhoneNumber(et3.getText().toString());
@@ -93,12 +144,11 @@ public class Register_PG extends AppCompatActivity {
         pg.setSecurityAvailable(security.isChecked());
         pg.setACAvailable(ac.isChecked());
 
-        pg.setPgID(pg.getPgID());
+        pg.setPgID(key);
 
-        Log.d("Data", "successful");
+        Log.d("PG ID is", pg.getPgID());
 
-        String ID = pg.getPgID();
-        Log.d("PG ID", ID);
+
 
         try {
             reference.child("PG").child(key).setValue(pg);
@@ -122,4 +172,12 @@ public class Register_PG extends AppCompatActivity {
                         }).create();
         builder1.show();
     }
+
+
+    public void locationDetailsClicked(View view){
+        Intent intent = new Intent(Register_PG.this, MapActivity.class);
+        intent.putExtra("activity", "register");
+        startActivity(intent);
+    }
+
 }

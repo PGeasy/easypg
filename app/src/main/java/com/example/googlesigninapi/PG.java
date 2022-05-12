@@ -1,5 +1,10 @@
 package com.example.googlesigninapi;
 
+import android.net.Uri;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class PG {
     private String pgName;
     private String ownerName;
@@ -8,11 +13,12 @@ public class PG {
     private String numberOfRooms;
     private String numberOfRoomsVacant;
     private String city;
+    public ArrayList<Uri> images;
 
-    private String pgID;
+    String pgID;
 
     public String getPgID() {
-        return latitude+""+longitude;
+        return pgID;
     }
 
     public void setPgID(String pgID) {
@@ -27,6 +33,12 @@ public class PG {
         isACAvailable = ACAvailable;
     }
 
+    public void addPGImage(Uri image){
+        if(images == null){
+            images = new ArrayList<>();
+        }
+        images.add(image);
+    }
 
     private String address;
     private String longitude;

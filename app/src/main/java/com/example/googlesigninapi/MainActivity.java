@@ -33,6 +33,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -52,13 +54,16 @@ public class MainActivity extends AppCompatActivity {
     static FirebaseDatabase database;
     static HashMap<String, Chat> chatlist;
     static String Username;
-
+    static FirebaseStorage storage;
+    static StorageReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         chatlist = new HashMap<>();
         database = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
         chatID = "";
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -106,23 +111,26 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.log_in:
                         account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                        if(account != null){
-                            Toast.makeText(getApplicationContext(), "ALREADY SIGNED-IN", Toast.LENGTH_SHORT).show();
+                        if(item.getTitle().equals("Log In")){
+                            item.setTitle("Log Out");
+                            if(account != null){
+                                Toast.makeText(getApplicationContext(), "ALREADY SIGNED-IN", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                signIn();
+                            }
                         }
-                        else {
-                            signIn();
-                        }
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
 
-                    case R.id.log_out:
-                        account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                        if(account != null){
-                            signOut();
+                        else if(item.getTitle().equals("Log Out")){
+                            item.setTitle("Log In");
+                            if(account != null){
+                                signOut();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), "ALREADY SIGNED-OUT", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else{
-                            Toast.makeText(getApplicationContext(), "ALREADY SIGNED-OUT", Toast.LENGTH_SHORT).show();
-                        }
+
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }

@@ -232,7 +232,7 @@ public class Search_Filter extends AppCompatActivity {
                             pg.setSecurityAvailable((Boolean)(pgInformation.get("securityAvailable")));
                             pg.setACAvailable((Boolean)(pgInformation.get("acavailable")));
 
-                            //pg.setPgID(pg.getPgID());
+                            pg.setPgID((String)pgInformation.get("pgID"));
                             PG_list.addPG(pg);
                             Log.d("Added Successfully", PG_list.getPgArrayList().size()+"");
                         }
@@ -271,6 +271,7 @@ public class Search_Filter extends AppCompatActivity {
 
     public void mapClicked(View view){
         Intent intent = new Intent(Search_Filter.this, MapActivity.class);
+        intent.putExtra("activity", "search");
         startActivity(intent);
     }
 

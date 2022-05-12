@@ -59,6 +59,22 @@
             android:textSize="30dp"
             android:text="Location Details" />
 
+        <Button
+            android:id="@+id/location_details"
+            android:onClick="locationDetailsClicked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get your Location details " />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="212dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="190dp"
+            android:text="OR" />
+
+
+
         <EditText
             android:hint="City"
             android:layout_width="match_parent"
@@ -136,6 +152,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Is security Available" />
+
+        <Button
+            android:id="@+id/addImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addImage"
+            android:text="Add Image" />
 
         <Button
             android:id="@+id/submit"
