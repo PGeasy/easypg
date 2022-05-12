@@ -8,11 +8,15 @@
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_login.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_main2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_map.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_pg_details.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_register_pg.xml" value="0.264" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/activity_search_filter.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/fragment_maps.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/header_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/item_chat_list.xml" value="0.1721014492753623" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/items_recycler_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/recycle_view1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/GS/AndroidStudioProjects/easypg/app/src/main/res/layout/recycler_view.xml" value="0.25416666666666665" />
       </map>
     </option>

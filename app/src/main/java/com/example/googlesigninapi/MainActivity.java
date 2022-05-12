@@ -35,6 +35,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.net.URL;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,16 +48,18 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
-
+    static String chatID;
     static FirebaseDatabase database;
+    static HashMap<String, Chat> chatlist;
+    static String Username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        chatlist = new HashMap<>();
         database = FirebaseDatabase.getInstance();
-
+        chatID = "";
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account != null) {
             String personName = account.getDisplayName();
+            Username = personName;
             String personEmail = account.getEmail();
             Uri personPhoto = account.getPhotoUrl();
 
@@ -202,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             if (acct != null) {
                 String personName = acct.getDisplayName();
+                Username = personName;
                 String personEmail = acct.getEmail();
                 Uri personPhoto = acct.getPhotoUrl();
 

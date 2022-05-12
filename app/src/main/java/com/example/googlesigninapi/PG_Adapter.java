@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.ArrayList;
 
@@ -21,7 +23,7 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
 
 
     ArrayList<PG> pgArrayList1;
-
+    static int indexClicked;
     /*public PG_Adapter() {
         this.pgArrayList1 = PG_list.getPgArrayList();
     }*/
@@ -46,14 +48,12 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
         String PG_contact = pgArrayList1.get(position).getPhoneNumber();
         String PG_rooms = pgArrayList1.get(position).getNumberOfRooms();
         Log.d("Data", PG_name+""+PG_address+position);
-        holder.setdata(PG_name, PG_address, PG_email, PG_contact, PG_rooms);
+        holder.pg_name_tv.setText(PG_name);
+        holder.pg_address_tv.setText("Address :"+PG_address);
+        holder.pg_email_tv.setText(PG_email);
+        holder.pg_contact_tv.setText(PG_contact);
+        holder.pg_rooms_tv.setText("Available Rooms :"+PG_rooms);
 
-        holder.pg_name_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(holder.pg_name_tv.getContext(), PG_name+" is Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
         return PG_list.getPgArrayList().size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder{
+    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView pg_name_tv;
         TextView pg_address_tv;
@@ -76,14 +76,18 @@ public class PG_Adapter extends RecyclerView.Adapter<PG_Adapter.ViewHolder> {
             pg_email_tv = itemView.findViewById(R.id.pg_email);
             pg_contact_tv = itemView.findViewById(R.id.pg_contact);
             pg_rooms_tv = itemView.findViewById(R.id.pg_rooms);
+            itemView.setOnClickListener(this);
         }
 
-        public void setdata(String pg_name, String pg_address, String pg_email, String pg_contact, String pg_rooms) {
-            pg_name_tv.setText(pg_name);
-            pg_address_tv.setText("Address :"+pg_address);
-            pg_email_tv.setText(pg_email);
-            pg_contact_tv.setText(pg_contact);
-            pg_rooms_tv.setText("Available Rooms :"+pg_rooms);
+        @Override
+        public void onClick(View view){
+            int idx = getLayoutPosition();
+            Log.d("RecyleView Clicked", "At pos: " + idx);
+            indexClicked = idx;
+            MainActivity.chatID = pgArrayList1.get(idx).getPgName()+MainActivity.Username;
+            Intent intent = new Intent(view.getContext().getApplicationContext(), PG_details.class);
+            view.getContext().startActivity(intent);
         }
+
     }
 }

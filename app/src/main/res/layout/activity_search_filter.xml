@@ -32,8 +32,24 @@
         android:id="@+id/getlocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get your Location" />
+        android:text="Get your Current Location" />
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:textAlignment="center"
+        />
+
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="mapClicked"
+        android:text="Select from Map"
+        tools:ignore="OnClick" />
 
     <TextView
 

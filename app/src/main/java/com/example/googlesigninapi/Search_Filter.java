@@ -51,8 +51,8 @@ public class Search_Filter extends AppCompatActivity {
     private Toast t;
     private SeekBar radiusLength;
     private TextView radiusSelected;
-    private EditText latitude_edit;
-    private EditText longitude_edit;
+    static EditText latitude_edit;
+    static EditText longitude_edit;
     private static int progress;
 
     public static double distance(double lat1,
@@ -266,6 +266,12 @@ public class Search_Filter extends AppCompatActivity {
         Log.d("Trying to start", "Recyler View");
 
 
+    }
+
+
+    public void mapClicked(View view){
+        Intent intent = new Intent(Search_Filter.this, MapActivity.class);
+        startActivity(intent);
     }
 
 }
